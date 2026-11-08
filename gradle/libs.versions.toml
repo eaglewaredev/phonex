@@ -29,8 +29,8 @@ androidx-navigation = "2.10.0"
 kotlinx-serialization = "1.12.0"
 
 multiplatform-nav3-ui = "1.2.0"
-compose-multiplatform-adaptive = "1.3.0-beta02"
-compose-multiplatform-lifecycle = "2.10.0"
+compose-multiplatform-adaptive = "1.3.0"
+compose-multiplatform-lifecycle = "2.11.0"
 androidxMaterial3 = "1.4.0"
 
 sqldelight = "2.5.0-SNAPSHOT"
@@ -71,7 +71,11 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 jetbrains-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "multiplatform-nav3-ui" }
 jetbrains-material3-adaptiveNavigation3 = { module = "org.jetbrains.compose.material3.adaptive:adaptive-navigation3", version.ref = "compose-multiplatform-adaptive" }
 jetbrains-lifecycle-viewmodelNavigation3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "compose-multiplatform-lifecycle" }
-androidx-compose-material3-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxMaterial3" }
+
+# sqldelight
+sqldelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
+sqldelight-coroutine = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-jvm = { group = "app.cash.sqldelight", name = "sqlite-driver", version.ref = "sqldelight" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

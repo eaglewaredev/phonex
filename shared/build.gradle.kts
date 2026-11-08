@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
 
     kotlin ("plugin.serialization") version "2.4.21"
+    id("app.cash.sqldelight") version "2.5.0-SNAPSHOT"
 }
 
 kotlin {
@@ -34,6 +35,8 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.uiTooling)
+
+            implementation(libs.sqldelight.android)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -58,6 +61,8 @@ kotlin {
             implementation(libs.jetbrains.navigation3.ui)
             implementation(libs.jetbrains.material3.adaptiveNavigation3)
             implementation(libs.jetbrains.lifecycle.viewmodelNavigation3)
+
+            implementation(libs.sqldelight.coroutine)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -70,4 +75,12 @@ kotlin {
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
+}
+
+sqldelight {
+    databases {
+        register("Phonex") {
+            packageName.set("dev.eagleware")
+        }
+    }
 }
