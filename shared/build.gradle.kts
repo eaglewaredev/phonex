@@ -8,6 +8,8 @@ plugins {
 
     kotlin ("plugin.serialization") version "2.4.21"
     id("app.cash.sqldelight") version "2.5.0-SNAPSHOT"
+
+    alias(libs.plugins.koin.compiler)
 }
 
 kotlin {
@@ -37,6 +39,8 @@ kotlin {
             implementation(libs.compose.uiTooling)
 
             implementation(libs.sqldelight.android)
+
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -63,6 +67,13 @@ kotlin {
             implementation(libs.jetbrains.lifecycle.viewmodelNavigation3)
 
             implementation(libs.sqldelight.coroutine)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.annotations) // only with annotations
+
+            // Compose Multiplatform
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
