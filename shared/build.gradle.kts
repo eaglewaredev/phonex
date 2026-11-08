@@ -72,6 +72,9 @@ kotlin {
             implementation(libs.kotlinx.coroutinesSwing)
 
             implementation(libs.sqldelight.jvm)
+
+            implementation(libs.datastore.core)
+            implementation(libs.datastore.preference.core)
         }
         getByName("androidDeviceTest").dependencies {
             implementation(libs.androidx.testRunner)
