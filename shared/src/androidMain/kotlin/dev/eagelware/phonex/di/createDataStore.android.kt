@@ -18,7 +18,7 @@ import androidx.datastore.preferences.core.PreferencesFileSerializer
 actual fun createDataStore(): DataStore<Preferences> = DataStoreFactory.create(
     storage = FileStorage(
         serializer = PreferencesFileSerializer,
-        produceFile = { applicationContext.filesDir.resolve(DATASTORE_FILE_NAME) }
+        produceFile = { context .filesDir.resolve(DATASTORE_FILE_NAME) }
     )
 )
 

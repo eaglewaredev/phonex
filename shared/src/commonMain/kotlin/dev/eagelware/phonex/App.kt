@@ -5,24 +5,30 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.savedstate.serialization.SavedStateConfiguration
 import dev.eagelware.phonex.components.NSuiteScaffold
 import dev.eagelware.phonex.theme.ETheme
 import dev.eagelware.phonex.theme.LocalTheme
+import dev.eagelware.phonex.theme.isDark
+import dev.eagelware.phonex.viewmodel.UserSettingsViewModel
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import org.jetbrains.compose.resources.painterResource
+import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
+import org.koin.java.KoinJavaComponent.inject
 
-import phonex.shared.generated.resources.Res
-import phonex.shared.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App() {
+fun App(userSettingsViewModel: UserSettingsViewModel = koinViewModel()) {
+    val userSettings by userSettingsViewModel.userSettings.collectAsState()
+    isDark.value = userSettings.darkTheme
     CompositionLocalProvider(LocalTheme provides LocalTheme.current){
-        ETheme(darkTheme = LocalTheme.current.value) {
+        ETheme(LocalTheme.current.value) {
             val config = SavedStateConfiguration {
                 serializersModule = SerializersModule {
                     polymorphic(NavKey::class){
